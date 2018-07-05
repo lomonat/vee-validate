@@ -76,6 +76,7 @@ export default class FieldBag {
    * Adds a field item to the list.
    */
   push (item: ?Field) {
+    console.time('push');
     if (! (item instanceof Field)) {
       throw createError('FieldBag only accepts instances of Field that has an id defined.');
     }
@@ -84,10 +85,11 @@ export default class FieldBag {
       throw createError('Field id must be defined.');
     }
 
-    if (this.find({ id: item.id })) {
+/*    if (this.find({ id: item.id })) {
       throw createError(`Field with id ${item.id} is already added.`);
-    }
+    } */
 
     this.items.push(item);
+    console.timeEnd('push')
   }
 }
